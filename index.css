@@ -1,0 +1,159 @@
+:root {
+    --surface-color: #ffffff;
+    --curve: 40;
+  }
+  
+  * {
+    box-sizing: border-box;  
+  }
+  
+
+
+  body {
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(to right, #0f0028, rgb(0, 16, 18));
+    background-size: 300% 300%;
+    animation: wave-background 3s ease infinite;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'MontserratBold', sans-serif;
+
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer */
+    user-select: none; /* Para otros navegadores */
+  }
+
+  
+  @keyframes wave-background {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 90% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('Montserrat-Light.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'MontserratBold';
+    src: url('Montserrat-Bold-DeFi.ttf') format('truetype');
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem 5vw;
+    padding: 0;
+    list-style-type: none;
+    
+  }
+  
+  .card {
+    position: relative;
+    display: block;
+    height: 100%;  
+    border-radius: calc(var(--curve) * 1px);
+    overflow: hidden;
+    text-decoration: none;
+  }
+  
+  .card__image {      
+    width: 100%;
+    height: auto;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;      
+    border-radius: calc(var(--curve) * 1px);    
+    background-color: var(--surface-color);      
+    transform: translateY(100%);
+    transition: .2s ease-in-out;
+  }
+
+
+
+  
+  .card:hover .card__overlay {
+    transform: translateY(0);
+  }
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    padding: 2em;
+    border-radius: calc(var(--curve) * 1px) 0 0 0;    
+    background-color: var(--surface-color);
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+  }
+  
+  .card__arc {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 100%;
+    right: 0;      
+    z-index: 1;
+  }
+  
+  .card__arc path {
+    fill: var(--surface-color);
+    d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+  }       
+  
+  .card:hover .card__header {
+    transform: translateY(0);
+  }
+  
+  .card__thumb {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;      
+    border-radius: 50%;      
+  }
+  
+  .card__title {
+    font-size: 1.2em;
+    margin: 0 0 .3em;
+    color: #000000;
+  }
+  
+  .card__tagline {
+    display: block;
+    margin: 1em 0;
+    font-family: 'MontserratBold', sans-serif; 
+    font-size: .8em; 
+    color: #D7BDCA;  
+  }
+  
+  .card__status {
+    font-size: .8em;
+    color: #9c9c9c;
+  }
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #c4c4c4;
+    font-family: 'MontserratBold', sans-serif;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  } 
